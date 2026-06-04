@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Checklist WMS Senior | Armazém Geral</title>
+  <style>
+    :root{
+      --bg:#071016; --panel:#0c1720; --panel2:#111f2b; --card:#122331; --line:#243847;
+      --text:#e8f2f8; --muted:#9fb3c1; --soft:#d7e4eb; --accent:#d4a63a; --accent2:#5dd6b2;
+      --danger:#ef6b73; --warn:#f1bb47; --ok:#4ad18f; --shadow:0 24px 60px rgba(0,0,0,.35);
+    }
+    *{box-sizing:border-box} body{margin:0;font-family:Inter,Segoe UI,Arial,sans-serif;background:radial-gradient(circle at top left,#173043 0,#071016 38%,#05090d 100%);color:var(--text)}
+    .app{display:grid;grid-template-columns:310px 1fr;min-height:100vh}.sidebar{position:sticky;top:0;height:100vh;padding:26px 20px;background:rgba(7,16,22,.9);border-right:1px solid rgba(255,255,255,.08);backdrop-filter:blur(14px);overflow:auto}.brand{display:flex;gap:14px;align-items:center;margin-bottom:24px}.logo{width:48px;height:48px;border-radius:16px;background:linear-gradient(135deg,var(--accent),#7b5512);display:grid;place-items:center;font-weight:900;color:#111}.brand h1{font-size:17px;margin:0;line-height:1.2}.brand p{margin:4px 0 0;color:var(--muted);font-size:12px}.nav button{width:100%;text-align:left;border:1px solid transparent;background:transparent;color:var(--muted);padding:12px 12px;border-radius:14px;margin:4px 0;cursor:pointer;font-weight:650}.nav button:hover,.nav button.active{background:rgba(212,166,58,.12);border-color:rgba(212,166,58,.35);color:var(--text)}.side-card{margin-top:22px;padding:16px;border:1px solid var(--line);background:rgba(18,35,49,.65);border-radius:20px}.side-card small{color:var(--muted);display:block;margin-bottom:8px}.progress{height:12px;background:#0b131b;border-radius:999px;overflow:hidden;border:1px solid var(--line)}.bar{height:100%;width:0;background:linear-gradient(90deg,var(--accent),var(--accent2));transition:.35s}.main{padding:34px 36px 60px}.hero{border:1px solid rgba(255,255,255,.08);background:linear-gradient(135deg,rgba(18,35,49,.92),rgba(9,18,25,.92));border-radius:30px;padding:30px;box-shadow:var(--shadow);position:relative;overflow:hidden}.hero:after{content:"";position:absolute;right:-120px;top:-120px;width:340px;height:340px;border-radius:50%;background:rgba(212,166,58,.14)}.eyebrow{color:var(--accent);font-size:12px;font-weight:900;letter-spacing:.18em;text-transform:uppercase}.hero h2{font-size:34px;margin:10px 0 10px}.hero p{color:var(--muted);max-width:900px;line-height:1.6}.toolbar{display:flex;gap:10px;flex-wrap:wrap;margin-top:22px}.btn{border:1px solid var(--line);background:#132332;color:var(--text);border-radius:14px;padding:11px 14px;font-weight:800;cursor:pointer}.btn.primary{background:linear-gradient(135deg,var(--accent),#8a651b);color:#121212;border:0}.btn.danger{background:rgba(239,107,115,.12);color:#ffd5d8;border-color:rgba(239,107,115,.4)}.filters{display:grid;grid-template-columns:2fr 1fr 1fr;gap:12px;margin:22px 0}.input,.select,textarea{width:100%;background:#09141c;border:1px solid var(--line);color:var(--text);border-radius:14px;padding:12px 13px;outline:none}textarea{min-height:72px;resize:vertical}.kpis{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin:20px 0}.kpi{background:rgba(18,35,49,.75);border:1px solid var(--line);border-radius:22px;padding:18px}.kpi b{font-size:28px}.kpi span{display:block;color:var(--muted);font-size:13px;margin-top:4px}.module{margin-top:24px}.module-head{display:flex;justify-content:space-between;gap:20px;align-items:flex-end;margin:34px 0 14px}.module-head h3{font-size:24px;margin:0}.module-head p{margin:6px 0 0;color:var(--muted);line-height:1.5}.grid{display:grid;gap:14px}.item{background:rgba(18,35,49,.88);border:1px solid var(--line);border-radius:22px;padding:18px;box-shadow:0 10px 24px rgba(0,0,0,.18)}.item-top{display:grid;grid-template-columns:34px 1fr 180px;gap:14px;align-items:start}.check{width:24px;height:24px;accent-color:var(--accent);margin-top:4px}.item h4{margin:0;font-size:18px}.tag{display:inline-flex;align-items:center;gap:6px;font-size:11px;text-transform:uppercase;letter-spacing:.08em;color:#151515;background:var(--accent);border-radius:999px;padding:5px 9px;font-weight:900;margin-bottom:8px}.status{font-weight:800}.details{display:grid;grid-template-columns:repeat(2,1fr);gap:10px;margin:16px 0}.box{background:#09141c;border:1px solid rgba(255,255,255,.07);border-radius:16px;padding:13px}.box strong{display:block;color:var(--accent);font-size:12px;text-transform:uppercase;letter-spacing:.08em;margin-bottom:6px}.box div{color:var(--soft);line-height:1.5;font-size:14px;white-space:pre-line}.notes{display:grid;grid-template-columns:1fr 210px;gap:10px;align-items:start}.savehint{font-size:12px;color:var(--muted);margin-top:8px}.pill{display:inline-block;padding:6px 10px;border-radius:999px;background:rgba(93,214,178,.12);color:var(--accent2);font-weight:800;font-size:12px}@media(max-width:1000px){.app{grid-template-columns:1fr}.sidebar{position:relative;height:auto}.filters,.kpis,.details,.notes,.item-top{grid-template-columns:1fr}.main{padding:22px}.hero h2{font-size:27px}}
+    @media print{.sidebar,.toolbar,.filters,.btn{display:none!important}.app{display:block}.main{padding:0}.item{break-inside:avoid;background:#fff;color:#111;border:1px solid #ddd}.hero{box-shadow:none;color:#111;background:#fff}.box{background:#fff;color:#111}.box div,.hero p{color:#333}body{background:#fff;color:#111}}
+  </style>
+</head>
+<body>
+<div class="app">
+  <aside class="sidebar">
+    <div class="brand"><div class="logo">WMS</div><div><h1>Checklist Armazém Geral</h1><p>WMS Senior • Governança Operacional</p></div></div>
+    <div class="nav" id="nav"></div>
+    <div class="side-card"><small>Progresso geral</small><div class="progress"><div class="bar" id="progressBar"></div></div><p id="progressText" style="margin:10px 0 0;color:var(--muted)">0% concluído</p></div>
+    <div class="side-card"><small>Banco local</small><p style="margin:0;color:var(--muted);line-height:1.5">As marcações e observações ficam salvas automaticamente neste navegador via localStorage. Use Exportar CSV para abrir no Excel.</p></div>
+  </aside>
+  <main class="main">
+    <section class="hero">
+      <span class="eyebrow">Armazém Geral</span>
+      <h2>Checklist profissional de parametrização WMS Senior</h2>
+      <p>Controle técnico para implantação, validação fiscal, cadastros base, estrutura física, produtos, embalagens, fluxo operacional, governança e monitoramento. Cada item permite marcar como realizado, registrar responsável, data e observação.</p>
+      <div class="toolbar">
+        <button class="btn primary" onclick="exportCSV()">Exportar planilha CSV</button>
+        <button class="btn" onclick="exportJSON()">Exportar backup JSON</button>
+        <label class="btn" for="importJson">Importar backup JSON</label><input id="importJson" type="file" accept="application/json" hidden onchange="importJSON(event)">
+        <button class="btn" onclick="window.print()">Imprimir / PDF</button>
+        <button class="btn danger" onclick="resetAll()">Limpar banco local</button>
+      </div>
+    </section>
+
+    <section class="filters">
+      <input class="input" id="search" placeholder="Pesquisar por tela, caminho, objetivo, parametrização..." oninput="render()">
+      <select class="select" id="moduleFilter" onchange="render()"><option value="">Todos os módulos</option></select>
+      <select class="select" id="statusFilter" onchange="render()"><option value="">Todos os status</option><option value="done">Realizados</option><option value="pending">Pendentes</option></select>
+    </section>
+
+    <section class="kpis">
+      <div class="kpi"><b id="kpiTotal">0</b><span>Total de itens</span></div>
+      <div class="kpi"><b id="kpiDone">0</b><span>Realizados</span></div>
+      <div class="kpi"><b id="kpiPending">0</b><span>Pendentes</span></div>
+      <div class="kpi"><b id="kpiPercent">0%</b><span>Conclusão</span></div>
+    </section>
+
+    <section id="content"></section>
+  </main>
+</div>
+<script>
+const modules = [
+{ id:'m1', title:'MÓDULO 1: PARAMETRIZAÇÕES INICIAIS E FISCAIS', desc:'Este é o alicerce da operação. Sem estas configurações, o sistema não reconhecerá a propriedade de terceiros sobre as mercadorias.' },
+{ id:'m2', title:'MÓDULO 2: CADASTROS BASE E ESTRUTURA FÍSICA', desc:'Cadastros estruturais para vincular depositantes, clientes e locais físicos da operação.' },
+{ id:'m3', title:'MÓDULO 3: PRODUTOS E EMBALAGENS', desc:'Configurações fiscais, logísticas e de paletização necessárias para controle correto de produtos.' },
+{ id:'m4', title:'MÓDULO 4: FLUXO OPERACIONAL PONTA A PONTA', desc:'Recebimento, conferência, cobertura fiscal, expedição, onda, packing e checkout.' },
+{ id:'m5', title:'CHECKLIST TÉCNICO DE VALIDAÇÃO FINAL', desc:'Itens finais para confirmar que a operação de Armazém Geral está pronta.' },
+{ id:'m6', title:'RECOMENDAÇÕES PARA GOVERNANÇA E AMBIENTES', desc:'Dependências, homologação, produção, segurança e monitoramento operacional.' }
+];
+const checklist = [
+{ id:'1.1', module:'m1', titulo:'Cadastro de Regime de Armazenagem', caminho:'Cadastro > Entidade > Regime de Armazenagem', objetivo:'Definir se a entidade controla cobertura fiscal e contribuição de ICMS.', campos:'Regime (Descrição)\nClassificação (Armazém Geral)\nFlag "Contribuinte ICMS"', parametrizacao:'Deve ser criado o regime "Armazém Geral" com a flag de contribuinte ativa para permitir a emissão de notas de retorno.', impacto:'O sistema não gerará notas de retorno simbólico ou efetivo, travando a saída fiscal.', exemplo:'Regime: Armazém Geral\nClassificação: Armazém Geral\nContribuinte ICMS: Ativo' },
+{ id:'1.2', module:'m1', titulo:'Cadastro da Entidade (Armazém/Proprietário)', caminho:'Cadastro > Entidade > Entidade', objetivo:'Configurar o armazém como emissor de documentos fiscais.', campos:'Guia Endereço\nGuia NF-e\nCertificado Digital\nLogotipo DANFE', parametrizacao:'Guia Endereço: Cadastrar o endereço completo com a flag Endereço Fiscal ativa.\nGuia NF-e: Ativar "Emite Nota Fiscal Eletrônica", informar CNAE, Série da NF e Ambiente (Homologação ou Produção).\nCertificado Digital: Importar o certificado A1 (Série e Senha).', impacto:'Sem endereço fiscal, NF-e ou certificado, o armazém não emite documentos fiscais corretamente.', exemplo:'Endereço Fiscal: ativo\nEmite NF-e: ativo\nAmbiente: Homologação ou Produção\nCertificado A1 importado\nBoa prática: anexar o logotipo da empresa para impressão no DANFE.' },
+{ id:'1.3', module:'m1', titulo:'Configuração de CFOPs (Operações Fiscais)', caminho:'Cadastro > Fiscal > Operações – CFOP', objetivo:'Mapear as operações de entrada e saída para Armazém Geral.', campos:'Tipos de Operação: RA, RS, TA, TS, RT', parametrizacao:'RA (Remessa para Armazenagem): Entrada física do depositante.\nRS (Remessa Simbólica): Cobertura de mercadoria enviada por fornecedor.\nTA (Retorno de Armazenagem): Saída física para o depositante.\nTS (Retorno Simbólico): Baixa fiscal de venda direta ao cliente.\nRT (Remessa por Conta e Ordem): Nota que acompanha o transporte na venda triangular.', impacto:'Rejeição da NF-e pela SEFAZ por natureza de operação incorreta.', exemplo:'Criar e revisar CFOPs por tipo de operação, vinculando natureza fiscal e operação correta.' },
+{ id:'2.1', module:'m2', titulo:'Cadastro de Depositante', caminho:'Cadastro > Depositante', objetivo:'Vincular o cliente (dono da mercadoria) às regras operacionais do armazém.', campos:'Guia Dados\nGuia Cobertura Fiscal\nGuia Integração', parametrizacao:'Guia Dados: Vincular ao Regime "Armazém Geral".\nGuia Cobertura Fiscal: Ativar envio de informações adicionais (Lote Indústria, Vencimento) na tag <infAdProd> do XML de retorno.\nGuia Integração: Ativar "Obriga Chave de Acesso na NF".', impacto:'Sem vínculo correto do depositante, o controle de propriedade, cobertura fiscal e XML de retorno ficam inconsistentes.', exemplo:'Depositante: Cliente proprietário da mercadoria\nRegime: Armazém Geral\nObriga Chave de Acesso na NF: Ativo\nDependência: A entidade do cliente deve ser cadastrada previamente em Cadastro > Entidade.' },
+{ id:'2.2', module:'m2', titulo:'Endereçamento e Setorização', caminho:'Cadastro > Armazém > Armazém > Botão Locais de Armazenagem', objetivo:'Organizar o fluxo físico e lógico.', campos:'Máscara de Endereço\nSetor\nRegião', parametrizacao:'Máscara de Endereço: Definir o padrão (Ex: @−−-$ para Bloco-Rua-Prédio-Andar).\nSetor: Criar setores vinculados ao Depositante e Produto. Importante: Setores para Armazém Geral podem ser configurados para "Permitir mais de um produto no pulmão" para otimizar espaço.\nRegião: Criar regiões de Picking e Pulmão para controle de fluxo de separação.', impacto:'Endereçamento incorreto gera falhas de alocação, separação, picking, pulmão e produtividade operacional.', exemplo:'Máscara: Bloco-Rua-Prédio-Andar\nRegiões: Picking e Pulmão\nSetor: vinculado ao depositante/produto quando necessário.' },
+{ id:'3.1', module:'m3', titulo:'Cadastro de Produto (Foco Fiscal)', caminho:'Cadastro > Produto > Produto', objetivo:'Garantir que o produto tenha dados fiscais e logísticos necessários para emissão e controle.', campos:'NCM\nLote Indústria\nData de Fabricação\nVencimento', parametrizacao:'Campo Crítico: NCM (Nomenclatura Comum do Mercosul). É obrigatório para a emissão das notas de retorno.\nColeta de Informações: Definir se o produto exige Lote Indústria, Data de Fabricação ou Vencimento. No regime de Armazém Geral, o controle de lote é essencial para a valoração correta na saída.', impacto:'Sem NCM ou controle de lote/validade, pode ocorrer erro fiscal, falha de valoração e inconsistência na saída.', exemplo:'Produto com NCM cadastrado.\nExige Lote Indústria: conforme operação.\nExige Vencimento: conforme característica do produto.' },
+{ id:'3.2', module:'m3', titulo:'Embalagem e Paletização', caminho:'Cadastro > Produto > Embalagem / Paletização', objetivo:'Definir norma de paletização para correta alocação física.', campos:'Lastro\nCamada\nNorma de Paletização\nUnidade de Medida / Fator de Conversão', parametrizacao:'Definir Lastro x Camada (Norma de Paletização).', impacto:'Se configurado incorretamente, o sistema gerará alocações fragmentadas (muitos lotes pequenos) em vez de paletes completos.', exemplo:'Lastro: quantidade por camada\nCamada: número de camadas\nPalete completo: cálculo correto para armazenagem e alocação.' },
+{ id:'4.1', module:'m4', titulo:'Recebimento (Entrada)', caminho:'Integração > Integração de Arquivo > Importação Manual / Coletor de Dados / Nota Fiscal > Armazém Geral > Notas Fiscais Aguardando Cobertura', objetivo:'Executar entrada fiscal, física e operacional de mercadorias no armazém.', campos:'XML de NF-e\nOrdem de Recebimento (OR)\nNF-e vinculada\nConferência Cega\nCobertura Fiscal', parametrizacao:'Importação XML: Via Integração > Integração de Arquivo > Importação Manual.\nOrdem de Recebimento (OR): Criar a OR e vincular a NF-e. Se for operação triangular (do fornecedor), o estoque entra Bloqueado por falta de saldo fiscal.\nConferência Cega: Realizada via Coletor de Dados.\nCobertura Fiscal (Triangular): O depositante envia a NF de Remessa Simbólica. O usuário processa em Nota Fiscal > Armazém Geral > Notas Fiscais Aguardando Cobertura para liberar o estoque.', impacto:'Sem cobertura fiscal ou OR correta, o estoque pode ficar bloqueado, sem liberação operacional ou com divergência fiscal.', exemplo:'1. Importar XML\n2. Criar OR\n3. Vincular NF-e\n4. Realizar conferência cega\n5. Processar cobertura fiscal triangular quando aplicável\n6. Liberar estoque' },
+{ id:'4.2', module:'m4', titulo:'Expedição (Saída)', caminho:'Pedidos / Formação de Onda / Packing / Checkout / Nota Fiscal de Retorno', objetivo:'Executar saída física, fiscal e operacional da mercadoria.', campos:'Pedido de Retorno Físico\nPedido de Venda Simbólico\nTA\nTS\nRT\nOnda\nPacking/Checkout', parametrizacao:'Pedido de Retorno (Físico): Quando o depositante pede a carga de volta. Gera a nota TA (Retorno de Armazenagem).\nPedido de Venda (Simbólico): Venda para cliente final. O WMS processa a separação física e gera a nota TS (Retorno Simbólico) e a RT (Remessa por Conta e Ordem).\nFormação de Onda: Agrupamento de pedidos para separação.\nPacking/Checkout: Conferência e geração de etiquetas de volume.', impacto:'Falhas na expedição podem gerar nota incorreta, separação errada, baixa fiscal inadequada ou erro de transporte.', exemplo:'Retorno físico: gerar TA.\nVenda triangular: gerar TS + RT.\nOperação: onda, separação, packing, checkout e etiqueta de volume.' },
+{ id:'5.1', module:'m5', titulo:'Certificado Digital', caminho:'Cadastro > Entidade > Entidade > Certificado Digital', objetivo:'Validar emissão fiscal da entidade proprietária.', campos:'Certificado A1\nSérie\nSenha\nValidade', parametrizacao:'Certificado Digital instalado e válido na Entidade Proprietária.', impacto:'Sem certificado válido, NF-e não será emitida/autorizada.', exemplo:'Certificado A1 válido e ambiente correto.' },
+{ id:'5.2', module:'m5', titulo:'NCM em 100% dos Produtos', caminho:'Cadastro > Produto > Produto', objetivo:'Garantir emissão correta das notas de retorno.', campos:'NCM', parametrizacao:'NCM cadastrado em 100% dos produtos do Armazém Geral.', impacto:'Produtos sem NCM podem bloquear emissão fiscal e retorno.', exemplo:'Auditar cadastro de produtos antes da operação.' },
+{ id:'5.3', module:'m5', titulo:'Endereço Fiscal', caminho:'Cadastro > Entidade > Entidade > Guia Endereço', objetivo:'Garantir cadastro fiscal correto do armazém.', campos:'Endereço completo\nFlag Endereço Fiscal', parametrizacao:'Endereço Fiscal cadastrado na Entidade do Armazém com a flag correspondente.', impacto:'Falha em documentos fiscais e dados de emissão.', exemplo:'Marcar endereço principal como fiscal.' },
+{ id:'5.4', module:'m5', titulo:'Regime de Armazém Geral nos Depositantes', caminho:'Cadastro > Depositante > Guia Dados', objetivo:'Garantir vínculo fiscal e operacional correto dos depositantes.', campos:'Regime: Armazém Geral', parametrizacao:'Depositantes vinculados ao regime "Armazém Geral".', impacto:'Sem vínculo, cobertura fiscal e retorno podem não funcionar corretamente.', exemplo:'Validar cada depositante ativo.' },
+{ id:'5.5', module:'m5', titulo:'Contrato de Serviço Ativo', caminho:'Cadastro / Contratos / Nota Fiscal de Entrada', objetivo:'Permitir cobrança da operação.', campos:'Contrato ativo\nVínculo com Nota Fiscal de Entrada', parametrizacao:'Contrato de serviço ativo vinculado à Nota Fiscal de entrada para permitir cobrança.', impacto:'Cobranças podem não ser geradas corretamente.', exemplo:'Contrato por depositante e operação.' },
+{ id:'5.6', module:'m5', titulo:'SLA de Operação', caminho:'Cadastro > Depositante > Guia Tempo em Dias para Limite de Operação', objetivo:'Controlar prazo operacional e SLA.', campos:'Tempo em Dias para Limite de Operação', parametrizacao:'SLA configurado na guia "Tempo em Dias para Limite de Operação" no cadastro do depositante.', impacto:'Sem SLA, não há controle claro de limite operacional e atendimento.', exemplo:'Definir prazos por processo/depositante.' },
+{ id:'6.1', module:'m6', titulo:'Mapa de Dependência', caminho:'Entidade -> Endereço Fiscal -> Regime de Armazém -> Depositante -> Produto -> Setor -> Local de Armazenagem', objetivo:'Garantir sequência correta de implantação e dependências entre cadastros.', campos:'Entidade\nEndereço Fiscal\nRegime\nDepositante\nProduto\nSetor\nLocal de Armazenagem', parametrizacao:'Seguir o mapa de dependência antes dos testes operacionais.', impacto:'Configurar fora de ordem pode gerar erros, retrabalho e bloqueios operacionais.', exemplo:'1. Entidade\n2. Endereço Fiscal\n3. Regime de Armazém\n4. Depositante\n5. Produto\n6. Setor\n7. Local de Armazenagem' },
+{ id:'6.2', module:'m6', titulo:'Ambiente de Teste (Homologação)', caminho:'Configurações de Ambiente / Cadastro > Entidade > NF-e', objetivo:'Validar a operação antes da produção.', campos:'Certificado Digital de testes\nAmbiente SEFAZ Homologação', parametrizacao:'Teste (Homologação): Deve possuir um Certificado Digital de testes e estar configurado para o ambiente de Homologação da SEFAZ.', impacto:'Testes em ambiente incorreto podem gerar documentos fiscais indevidos ou validações inválidas.', exemplo:'Ambiente: Homologação\nCertificado: teste/homologação' },
+{ id:'6.3', module:'m6', titulo:'Ambiente de Produção', caminho:'Configurações de Ambiente / Cadastro > Entidade > NF-e', objetivo:'Garantir operação fiscal real.', campos:'Certificado A1 real\nAmbiente SEFAZ Produção', parametrizacao:'Produção: Configurações idênticas à homologação, mas com Certificado A1 real e ambiente SEFAZ Produção.', impacto:'Configuração incorreta pode impedir emissão fiscal real ou gerar operação em ambiente errado.', exemplo:'Ambiente: Produção\nCertificado: A1 real válido' },
+{ id:'6.4', module:'m6', titulo:'Segurança e Grupos de Usuários', caminho:'Administração / Segurança / Grupos de Usuários', objetivo:'Controlar permissões por responsabilidade operacional.', campos:'Grupo Operador\nGrupo Conferente\nGrupo Supervisor\nPermissões críticas', parametrizacao:'Usuários devem ser divididos em Grupos (Operador, Conferente, Supervisor). Somente supervisores podem autorizar "Liberar com Divergência" ou "Estornar Coleta".', impacto:'Permissões indevidas aumentam risco operacional, fiscal e de auditoria.', exemplo:'Operador: execução\nConferente: conferência\nSupervisor: liberações críticas e estornos' },
+{ id:'6.5', module:'m6', titulo:'Monitoramento Operacional', caminho:'Monitoramento > Gestão de Atividades', objetivo:'Acompanhar o progresso das tarefas em tempo real no coletor.', campos:'Gestão de Atividades\nStatus das tarefas\nColetor de Dados', parametrizacao:'Utilizar a tela Monitoramento > Gestão de Atividades para acompanhar o progresso das tarefas em tempo real no coletor.', impacto:'Sem monitoramento, a gestão perde visibilidade de gargalos, produtividade e tarefas pendentes.', exemplo:'Acompanhar recebimento, armazenagem, separação, expedição e divergências em tempo real.' }
+];
+const storageKey = 'checklist_wms_armazem_geral_v1';
+let db = JSON.parse(localStorage.getItem(storageKey) || '{}');
+function save(){ localStorage.setItem(storageKey, JSON.stringify(db)); updateKPIs(); }
+function getState(id){ return db[id] || {done:false, obs:'', resp:'', date:''}; }
+function setField(id, field, value){ db[id] = {...getState(id), [field]: value}; save(); }
+function moduleTitle(id){ return modules.find(m=>m.id===id)?.title || id; }
+function initFilters(){
+  document.getElementById('moduleFilter').innerHTML = '<option value="">Todos os módulos</option>' + modules.map(m=>`<option value="${m.id}">${m.title}</option>`).join('');
+  document.getElementById('nav').innerHTML = modules.map(m=>`<button onclick="scrollToModule('${m.id}')">${m.title.replace('MÓDULO ','Mód. ')}</button>`).join('');
+}
+function scrollToModule(id){ const el=document.getElementById('section-'+id); if(el) el.scrollIntoView({behavior:'smooth',block:'start'}); }
+function render(){
+  const q = document.getElementById('search').value.toLowerCase();
+  const mf = document.getElementById('moduleFilter').value;
+  const sf = document.getElementById('statusFilter').value;
+  let html='';
+  modules.forEach(m=>{
+    const items = checklist.filter(item=>{
+      const st = getState(item.id);
+      const blob = Object.values(item).join(' ').toLowerCase();
+      return (!mf || item.module===mf) && (!q || blob.includes(q)) && (!sf || (sf==='done'?st.done:!st.done));
+    }).filter(i=>i.module===m.id);
+    if(!items.length) return;
+    html += `<section class="module" id="section-${m.id}"><div class="module-head"><div><h3>${m.title}</h3><p>${m.desc}</p></div><span class="pill">${items.length} itens</span></div><div class="grid">`;
+    items.forEach(item=>{
+      const st = getState(item.id);
+      html += `<article class="item">
+        <div class="item-top">
+          <input class="check" type="checkbox" ${st.done?'checked':''} onchange="setField('${item.id}','done',this.checked); render();">
+          <div><span class="tag">${item.id}</span><h4>${item.titulo}</h4><div class="savehint">${st.done?'Status: realizado':'Status: pendente'}</div></div>
+          <select class="select status" onchange="setField('${item.id}','done',this.value==='done'); render();"><option value="pending" ${!st.done?'selected':''}>Pendente</option><option value="done" ${st.done?'selected':''}>Realizado</option></select>
+        </div>
+        <div class="details">
+          <div class="box"><strong>Objetivo</strong><div>${escapeHtml(item.objetivo)}</div></div>
+          <div class="box"><strong>Caminho da tela</strong><div>${escapeHtml(item.caminho)}</div></div>
+          <div class="box"><strong>Campos obrigatórios</strong><div>${escapeHtml(item.campos)}</div></div>
+          <div class="box"><strong>O que parametrizar</strong><div>${escapeHtml(item.parametrizacao)}</div></div>
+          <div class="box"><strong>Impacto de erro</strong><div>${escapeHtml(item.impacto)}</div></div>
+          <div class="box"><strong>Exemplo / Validação</strong><div>${escapeHtml(item.exemplo)}</div></div>
+        </div>
+        <div class="notes">
+          <textarea placeholder="Observações, evidências, pendências ou prints validados..." oninput="setField('${item.id}','obs',this.value)">${escapeHtml(st.obs||'')}</textarea>
+          <div><input class="input" placeholder="Responsável" value="${escapeAttr(st.resp||'')}" oninput="setField('${item.id}','resp',this.value)"><input class="input" style="margin-top:10px" type="date" value="${escapeAttr(st.date||'')}" onchange="setField('${item.id}','date',this.value)"><div class="savehint">Salvo automaticamente</div></div>
+        </div>
+      </article>`;
+    });
+    html += '</div></section>';
+  });
+  document.getElementById('content').innerHTML = html || '<div class="item">Nenhum item encontrado para os filtros aplicados.</div>';
+  updateKPIs();
+}
+function updateKPIs(){
+  const total=checklist.length, done=checklist.filter(i=>getState(i.id).done).length, pending=total-done, pct=total?Math.round(done/total*100):0;
+  document.getElementById('kpiTotal').textContent=total; document.getElementById('kpiDone').textContent=done; document.getElementById('kpiPending').textContent=pending; document.getElementById('kpiPercent').textContent=pct+'%';
+  document.getElementById('progressBar').style.width=pct+'%'; document.getElementById('progressText').textContent=pct+'% concluído';
+}
+function csvCell(v){ return '"'+String(v??'').replace(/"/g,'""').replace(/\n/g,' | ')+'"'; }
+function exportCSV(){
+  const header=['ID','Módulo','Item','Status','Responsável','Data','Objetivo','Caminho','Campos Obrigatórios','Parametrização','Impacto de Erro','Exemplo/Validação','Observação'];
+  const rows=checklist.map(i=>{const st=getState(i.id);return [i.id,moduleTitle(i.module),i.titulo,st.done?'Realizado':'Pendente',st.resp,st.date,i.objetivo,i.caminho,i.campos,i.parametrizacao,i.impacto,i.exemplo,st.obs].map(csvCell).join(';')});
+  download('checklist_wms_armazem_geral.csv',[header.map(csvCell).join(';'),...rows].join('\ufeff\n'),'text/csv;charset=utf-8;');
+}
+function exportJSON(){ download('backup_checklist_wms_armazem_geral.json',JSON.stringify(db,null,2),'application/json'); }
+function importJSON(ev){ const f=ev.target.files[0]; if(!f)return; const r=new FileReader(); r.onload=()=>{try{db=JSON.parse(r.result);save();render();alert('Backup importado com sucesso.')}catch(e){alert('Arquivo JSON inválido.')}}; r.readAsText(f); }
+function download(name, content, type){ const blob=new Blob([content],{type}); const a=document.createElement('a'); a.href=URL.createObjectURL(blob); a.download=name; a.click(); URL.revokeObjectURL(a.href); }
+function resetAll(){ if(confirm('Deseja apagar todas as marcações e observações salvas neste navegador?')){localStorage.removeItem(storageKey);db={};render();} }
+function escapeHtml(s){ return String(s??'').replace(/[&<>]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;'}[c])); }
+function escapeAttr(s){ return String(s??'').replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c])); }
+initFilters(); render();
+</script>
+</body>
+</html>
